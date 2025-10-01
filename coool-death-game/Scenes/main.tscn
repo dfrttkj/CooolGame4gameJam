@@ -1,29 +1,68 @@
-[gd_scene load_steps=4 format=3 uid="uid://5grr0xnlvi6v"]
+[gd_scene load_steps=7 format=3 uid="uid://5grr0xnlvi6v"]
 
-[ext_resource type="PackedScene" uid="uid://cwpbcjcjustss" path="res://Scenes/player.tscn" id="1_jjgbg"]
+[sub_resource type="BoxMesh" id="BoxMesh_7u77a"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jjgbg"]
+[sub_resource type="BoxMesh" id="BoxMesh_jjgbg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_bo1nx"]
 
-[node name="Main" type="Node3D"]
+[sub_resource type="BoxMesh" id="BoxMesh_8gbba"]
 
-[node name="Ground" type="StaticBody3D" parent="."]
+[sub_resource type="BoxMesh" id="BoxMesh_jjvhh"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
-shape = SubResource("BoxShape3D_jjgbg")
+[sub_resource type="BoxMesh" id="BoxMesh_kry3j"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
+[node name="TutorialMap" type="Node3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(30.699203, 0, 0, 0, 0.3019468, 0, 0, 0, 56.022038, 0, 0, 0)
+mesh = SubResource("BoxMesh_7u77a")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
+transform = Transform3D(1.926, 1.4861872e-06, 0, -1.6837627e-07, 17, 0, 0, 0, 56.022, 14.482094, 8.561086, -0.2455172)
+mesh = SubResource("BoxMesh_jjgbg")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="."]
+transform = Transform3D(1.926, 1.5052455e-06, 0, -1.6837627e-07, 17.218, 0, 0, 0, 56.022, -14.482, 8.561, -0.246)
+mesh = SubResource("BoxMesh_jjgbg")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="."]
+transform = Transform3D(30, 0, 0, 0, 25, 0, 0, 0, 1, 0, 8.70993, 27.889717)
 mesh = SubResource("BoxMesh_bo1nx")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="."]
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 50, 0, 16.70603, -51.305)
+mesh = SubResource("BoxMesh_8gbba")
 
-[node name="Player" parent="." instance=ExtResource("1_jjgbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGMesh3D5"]
+transform = Transform3D(1, 0, 0, 0, 1.2551138, 0, 0, 0, 0.155, 0, 0, 0.12882477)
+operation = 2
+mesh = SubResource("BoxMesh_jjvhh")
 
-[node name="CameraPivot" type="Marker3D" parent="."]
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="."]
+transform = Transform3D(30, 0, 0, 0, 25, 0, 0, 0, 1, 0, 4.147417, -27.60593)
+mesh = SubResource("BoxMesh_bo1nx")
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 10)
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, -5.822981, 22.573196, -77.69848)
+mesh = SubResource("BoxMesh_kry3j")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 7.7378025, 27.267252, -88.384895)
+mesh = SubResource("BoxMesh_kry3j")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, -5.7408695, 32.012863, -102.366844)
+mesh = SubResource("BoxMesh_kry3j")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="."]
+transform = Transform3D(30.699, 0, 0, 0, 1, 0, 0, 0, 59.758, 0, 38.50492, -141.5515)
+mesh = SubResource("BoxMesh_kry3j")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="."]
+transform = Transform3D(30.699, 0, 0, 0, 1, 0, 0, 0, 59.758, 0, -20.426497, -201.345)
+mesh = SubResource("BoxMesh_kry3j")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="."]
+transform = Transform3D(30.699, 0, 0, 0, -4.371139e-08, 59.580845, 0, -1, -2.6043615e-06, 0, 9.225136, -171.50195)
+mesh = SubResource("BoxMesh_kry3j")
