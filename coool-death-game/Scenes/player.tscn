@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwpbcjcjustss"]
+
+[ext_resource type="Script" uid="uid://jomuomfv41u" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="PackedScene" uid="uid://5k0k80tjl18s" path="res://Assets/tmp/character-d.glb" id="1_v0iea"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
+height = 1.9101563
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_cvnsp")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="character-d2" parent="Pivot" instance=ExtResource("1_v0iea")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_cvnsp")
