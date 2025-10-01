@@ -103,3 +103,4 @@ mesh = SubResource("BoxMesh_kry3j")
 
 [node name="Player" parent="." instance=ExtResource("1_jjgbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.198969, 0)
+mouseSensitivity = 0.002
