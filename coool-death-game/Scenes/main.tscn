@@ -1,6 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://5grr0xnlvi6v"]
+[gd_scene load_steps=13 format=3 uid="uid://5grr0xnlvi6v"]
 
+[ext_resource type="Script" uid="uid://br5qtwq4vamhu" path="res://Scripts/status.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://b5tqyb6xfk416" path="res://Scenes/player.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://c0nic80xwh7iq" path="res://Scenes/ghost.tscn" id="2_bo1nx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -36,71 +38,107 @@ environment = SubResource("Environment_8gbba")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0.693203, 59.285095, -39.123177)
 shadow_enabled = true
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+[node name="status" type="Node" parent="."]
+script = ExtResource("1_8gbba")
+isGhost = false
+
+[node name="Player" parent="status" instance=ExtResource("1_jjgbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.198969, 0)
+jump_power = 20
+mouseSensitivity = 0.002
+
+[node name="Ghost" parent="status" instance=ExtResource("2_bo1nx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.480327, 0.1509734, 5.39128)
+mouseSensitivity = 0.002
+
+[node name="Health" type="Node" parent="status"]
+
+[node name="Timer" type="Timer" parent="status/Health"]
+process_callback = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="status/Health"]
+
+[node name="GhostHealth" type="ProgressBar" parent="status/Health/CanvasLayer"]
+modulate = Color(1, 0, 0.16078432, 1)
+offset_left = 39.0
+offset_top = 24.0
+offset_right = 321.0
+offset_bottom = 70.0
+value = 10.0
+
+[node name="PlayerHealth" type="ProgressBar" parent="status/Health/CanvasLayer"]
+modulate = Color(0.121888794, 0.9976471, 1.1551381e-06, 1)
+offset_left = 40.0
+offset_top = 83.0
+offset_right = 322.0
+offset_bottom = 129.0
+value = 100.0
+
+[node name="map" type="Node" parent="."]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="map"]
 transform = Transform3D(30.699203, 0, 0, 0, 0.3019468, 0, 0, 0, 56.022038, 0, 0, 0)
 use_collision = true
 mesh = SubResource("BoxMesh_7u77a")
 
-[node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="map"]
 transform = Transform3D(1.926, 1.4861872e-06, 0, -1.6837627e-07, 17, 0, 0, 0, 56.022, 14.482094, 8.561086, -0.2455172)
 use_collision = true
 mesh = SubResource("BoxMesh_jjgbg")
 
-[node name="CSGMesh3D3" type="CSGMesh3D" parent="."]
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="map"]
 transform = Transform3D(1.926, 1.5052455e-06, 0, -1.6837627e-07, 17.218, 0, 0, 0, 56.022, -14.482, 8.561, -0.246)
 use_collision = true
 mesh = SubResource("BoxMesh_jjgbg")
 
-[node name="CSGMesh3D4" type="CSGMesh3D" parent="."]
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="map"]
 transform = Transform3D(30, 0, 0, 0, 25, 0, 0, 0, 1, 0, 8.70993, 27.889717)
 use_collision = true
 mesh = SubResource("BoxMesh_bo1nx")
 
-[node name="CSGMesh3D5" type="CSGMesh3D" parent="."]
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="map"]
 transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 50, 0, 16.70603, -51.305)
 use_collision = true
 mesh = SubResource("BoxMesh_8gbba")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGMesh3D5"]
+[node name="CSGMesh3D" type="CSGMesh3D" parent="map/CSGMesh3D5"]
 transform = Transform3D(1, 0, 0, 0, 1.2551138, 0, 0, 0, 0.155, 0, 0, 0.12882477)
 operation = 2
 mesh = SubResource("BoxMesh_jjvhh")
 
-[node name="CSGMesh3D6" type="CSGMesh3D" parent="."]
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="map"]
 transform = Transform3D(30, 0, 0, 0, 25, 0, 0, 0, 1, 0, 4.147417, -27.60593)
 use_collision = true
 mesh = SubResource("BoxMesh_bo1nx")
 
-[node name="CSGMesh3D7" type="CSGMesh3D" parent="."]
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="map"]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, -5.822981, 22.573196, -77.69848)
 use_collision = true
 mesh = SubResource("BoxMesh_kry3j")
 
-[node name="CSGMesh3D8" type="CSGMesh3D" parent="."]
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="map"]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 7.7378025, 27.267252, -88.384895)
 use_collision = true
 mesh = SubResource("BoxMesh_kry3j")
 
-[node name="CSGMesh3D9" type="CSGMesh3D" parent="."]
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="map"]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, -5.7408695, 32.012863, -102.366844)
 use_collision = true
 mesh = SubResource("BoxMesh_kry3j")
 
-[node name="CSGMesh3D10" type="CSGMesh3D" parent="."]
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="map"]
 transform = Transform3D(30.699, 0, 0, 0, 1, 0, 0, 0, 59.758, 0, 38.50492, -141.5515)
 use_collision = true
 mesh = SubResource("BoxMesh_kry3j")
 
-[node name="CSGMesh3D11" type="CSGMesh3D" parent="."]
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="map"]
 transform = Transform3D(30.699, 0, 0, 0, 1, 0, 0, 0, 59.758, 0, -20.426497, -201.345)
 use_collision = true
 mesh = SubResource("BoxMesh_kry3j")
 
-[node name="CSGMesh3D12" type="CSGMesh3D" parent="."]
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="map"]
 transform = Transform3D(30.699, 0, 0, 0, -4.371139e-08, 59.580845, 0, -1, -2.6043615e-06, 0, 9.225136, -171.50195)
 use_collision = true
 mesh = SubResource("BoxMesh_kry3j")
 
-[node name="Player" parent="." instance=ExtResource("1_jjgbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.198969, 0)
-mouseSensitivity = 0.002
+[connection signal="timeout" from="status/Health/Timer" to="status/Health" method="_on_timer_timeout"]
