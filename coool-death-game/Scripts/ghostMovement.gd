@@ -29,7 +29,7 @@ func _unhandled_input(event: InputEvent) -> void:								#For camera movement
 	
 var target_velocity = Vector3.ZERO
 
-func _physics_process():
+func _physics_process(delta):
 	if status.isGhost:
 		var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 		var direction = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
