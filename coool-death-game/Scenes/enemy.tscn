@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://xku6buhqpq0q"]
+
+[ext_resource type="Script" uid="uid://dmvur7jgvgnfd" path="res://enemy.gd" id="1_1f0kj"]
+[ext_resource type="PackedScene" uid="uid://6om5qppic30d" path="res://Assets/tmp/character-l.glb" id="2_afpow"]
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_1f0kj")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="character-l2" parent="Pivot" instance=ExtResource("2_afpow")]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
